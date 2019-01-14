@@ -1,0 +1,218 @@
+
+/*---------アニメ---------*/
+@keyframes flushHorizontal { 0% {
+    left:0;
+    right:100%;
+    }
+    45% {
+    left:0;
+    right:0;
+    }
+    55% {
+    left:0;
+    right:0;
+    }
+    100% {
+    left:100%;
+    right:0;
+    }
+    }
+  
+    
+.navbar {
+    position: relative;
+    padding: .5rem 1rem
+}
+
+.navbar-laraveltest {
+    background-color: rgba(0,0,0,.8);
+}
+
+.navbar-lighttest{
+    font-family:"微軟正黑體";
+    font-size: 20px;
+	text-align: center;
+}
+
+.navbar-brandtest{
+    display: inline-block;
+    padding-top: .32rem;
+    padding-bottom: .32rem;
+    margin-right: 1rem;
+    font-size: 23px;
+    line-height: inherit;
+    white-space: nowrap;
+    text-decoration: none;    
+}
+
+.navbar-brandtest:hover,.navbar-brandtest:focus{
+    color: rgba(0,0,0,0.8);
+    text-decoration: none;
+}
+
+.flush {
+	position: relative;
+	display: table;
+	font-style: normal;
+}
+.flush a {
+	opacity: 0;
+	transition: opacity 0.5s linear;
+	display: block;
+}
+.flush:after {
+	content: '';
+	top: 0;
+	bottom: 0;
+	position: absolute;
+	background-color: #fff;
+}
+.flush.flushRun:after { animation: flushHorizontal 0.6s cubic-bezier(0.02, 0.88, 0.58, 1); }
+
+.flush.flushRun a {
+	opacity: 1;
+	transition: opacity 0s linear;
+	transition-delay: 0.3s;
+}
+
+
+.baikuflush {
+	position: relative;
+	/*display: table;*/
+	font-style: normal;
+}
+.baikuflush a {
+	opacity: 0;
+	transition: opacity 0.5s linear;
+	
+}
+.baikuflush:after {
+	content: '';
+	top: 0;
+	bottom: 0;
+	position: relative;
+	background-color: #000;
+}
+.baikuflush.baikuflushRun:after { animation: flushHorizontal 0.6s cubic-bezier(0.02, 0.88, 0.58, 1); }
+
+.baikuflush.baikuflushRun a {
+	opacity: 1;
+	transition: opacity 0s linear;
+	transition-delay: 0.3s;
+}
+
+/*
+.cnflush {
+	position: relative;
+	display: table;
+	font-style: normal;
+}
+.cnflush a {
+	opacity: 0;
+	transition: opacity 10s linear;
+	display: block;
+}
+.cnflush:after {
+	content: '';
+	top: 0;
+	bottom: 0;
+	position: absolute;
+	background-color: #fff;
+}
+.cnflush.cnflushRun:after { animation: flushHorizontal 1s cubic-bezier(0.02, 0.88, 0.58, 1); }
+
+.cnflush.cnflushRun a {
+	opacity: 1;
+	transition: opacity 0s linear;
+	transition-delay: 0.3s;
+}
+*/
+
+#menuBtn {
+	background-color: #FFF;
+	height: 120px;
+	width: 120px;
+	position: fixed;
+	z-index: 9999;
+	left: 0px;
+	top: 0px;
+}
+.menu-trigger,
+.menu-trigger span {
+	display: inline-block;
+	transition: all .4s;
+	box-sizing: border-box;
+}
+.menu-trigger {
+	position: relative;
+	width: 120px;
+	height: 120px;
+}
+.menu-trigger span {
+	position: absolute;
+	left: 39px;
+	width: 42px;
+	height: 5px;
+	background-color: #000;
+}
+.menu-trigger span:nth-of-type(1) { top: 50px; }
+.menu-trigger span:nth-of-type(2) { top: 66px; }
+.menu-trigger.active { transform: rotate(90deg); }
+
+.nav {
+	overflow: auto;
+	position: fixed;
+	left: -100%;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9998;
+	background-color: #FFF;
+	transition: all 0.5s cubic-bezier(0, 0.6, 0.4, 1);
+}
+.nav.active { left: 0; }
+#navin {
+	border: 22px solid #FFF;
+	min-height: 620px;
+	min-width: 1200px;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	position: relative;
+}
+#navLeft {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	right: 50%;
+	bottom: 0px;
+}
+#navLeft ul {
+	height: 540px;
+	width: 166px;
+	margin-top: -290px;
+	margin-left: -83px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+}
+#navLeft ul li {
+	padding-top: 16px;
+	padding-bottom: 16px;
+}
+#navLeft ul li a {
+	display: table;
+	position: relative;
+}
+#navLeft ul li a:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 0%;
+	background-position: left center;
+	background-repeat: no-repeat;
+	transition: all 0.3s ease;
+	backface-visibility: hidden;
+}
