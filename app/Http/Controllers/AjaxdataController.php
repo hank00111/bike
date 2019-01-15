@@ -19,22 +19,29 @@ class AjaxdataController extends Controller
     }
 
     function getdata(Main $Main){
-
-        $Main = $Main
+        
+        /*$Main = $Main
         ->join('raberus', 'mains.raberu_id', '=', 'raberus.id')
         ->get();
 
-        return Datatables::of($Main)->make(true);
+        return Datatables::of($Main)->make(true);*/
        
-        /*
-        return Datatables::of(Main::query())
-
-        ->addColumn('raberu', function(Main $raberu_id) {
-            return $raberu_id->name;
+        
+        $Main = $Main
+        ->join('raberus', 'mains.raberu_id', '=', 'raberus.id')
+        ->get();
+        
+        return Datatables::of($Main)
+        ->addColumn('action', function($Main){
+            
+        return '<a href="#" class="btn btn-xs btn-primary edit" id="'.$Main->uid.'"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+        //.$users->id.'/edit  <a href="datatables/'.$Main->uid.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
         })
-        ->toJson();*/
-        //->make(true);
+        //->editColumn('id', '{{$uid}}')
+        ->make(true);
+        
     }
+
     function postdata(Request $request){
         $validation = Validator::make($request->all(), [
             'raberu_id' => 'required',
@@ -66,6 +73,14 @@ class AjaxdataController extends Controller
                 $Main->save();
                 $success_output = '<div class="alert alert-success">Data Inserted</div>';
             }
+           /* if($request->get('button_action') == 'update')
+            {
+                $Main = Main::find($request->get('student_id'));
+                $Main->first_name = $request->get('first_name');
+                $Main->last_name = $request->get('last_name');
+                $Main->save();
+                $success_output = '<div class="alert alert-success">Data Updated</div>';
+            }*/
         }
         $output = array(
             'error'     =>  $error_array,
@@ -73,4 +88,17 @@ class AjaxdataController extends Controller
         );
         echo json_encode($output);
     }
+
+    function fetchdata(Request $request){
+        $uid = $request->input('uid');
+        $Main = Main::find($uid)->tojson();
+
+        //echo json_encode($output);
+
+        return $Main;
+
+    }
+    
+    
+
 }
