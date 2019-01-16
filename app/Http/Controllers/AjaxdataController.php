@@ -18,8 +18,8 @@ class AjaxdataController extends Controller
         return view('bike.index');
     }
 
-    function edit($id){
-        $Main = main::find($id);
+    function edit($uid){
+        $Main = main::find($uid);
 
         //$items = \App\Item::all('uid','type')->toArray();
         $selections = [];
@@ -61,12 +61,15 @@ class AjaxdataController extends Controller
         ->get();
         
         return Datatables::of($Main)
-        ->addColumn('action', function($Main){
-            
-        return '<a href="bike/'.$Main->uid.'" class="btn btn-xs btn-primary edit" id="'.$Main->uid.'"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-        //.$users->id.'/edit  <a href="datatables/'.$Main->uid.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+        ->addColumn('action', function ($Main) {
+            return '<a href="' . route("bike.edit", $Main->uid) . '" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
         })
-        //->editColumn('id', '{{$uid}}')
+        
+        /*->addColumn('action', function($Main){           
+        return '<a href="{{ ' .$route. '}}" class="btn btn-xs btn-primary edit" id="'.$Main->uid.'"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+        //.$users->id.'/edit  <a href="{{ route('baiku.edit', $Main->uid) }}" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+        })
+        //->editColumn('id', '{{$uid}}')*/
         ->make(true);
         
     }

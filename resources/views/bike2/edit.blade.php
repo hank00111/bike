@@ -41,7 +41,7 @@
        {!! Form::submit('傳送',['class'=>'btn btn-outline-dark form-control']) !!}
    </div>
     {!! Form::close() !!}
-    <a href="{{ route('bike.index') }}" class="btn btn-outline-dark form-control" style="margin-bottom: 1rem;">回上一頁</a>
+    <a href="{{ route('moto.index') }}" class="btn btn-outline-dark form-control" style="margin-bottom: 1rem;">回上一頁</a>
     </div>
 
 @endsection
