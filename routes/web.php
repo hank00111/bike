@@ -23,7 +23,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/user', 'AjaxdataController@index')->name('userajax');
-Route::get('/user/getdata', 'AjaxdataController@getdata')->name('userajax.getdata');
-Route::post('/user/postdata', 'AjaxdataController@postdata')->name('userajax.postdata');
-Route::get('/user/fetchdata', 'AjaxdataController@fetchdata')->name('userajax.fetchdata');
+Route::get('/bike', 'AjaxdataController@index')->name('bikeajax');
+Route::get('/bike/{$id}', 'AjaxdataController@show')->name('bike.show');
+Route::get('/bike/edit/{$id}', 'AjaxdataController@edit')->name('bike.edit');
+Route::get('/bike/getdata', 'AjaxdataController@getdata')->name('bikeajax.getdata');
+Route::post('/bike/postdata', 'AjaxdataController@postdata')->name('bikeajax.postdata');
+Route::get('/bike/fetchdata', 'AjaxdataController@fetchdata')->name('bikeajax.fetchdata');

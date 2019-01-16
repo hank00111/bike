@@ -36,6 +36,9 @@
             </thead>
         </table>
     </div>
+
+
+
     <div id="bikeModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -85,7 +88,7 @@
             $('#bike_table').DataTable({
                 "processing": true,
                 "serverSide": true,
-                "ajax": "{{ route('userajax.getdata') }}",
+                "ajax": "{{ route('bikeajax.getdata') }}",
                 "columns":[
                     { "data": "uid" ,name: 'uid'},
                     { "data": "raberu_id",name: 'raberu_id' },
@@ -111,7 +114,7 @@
                 event.preventDefault();
                 var form_data = $(this).serialize();
                 $.ajax({
-                    url:"{{ route('userajax.postdata') }}",
+                    url:"{{ route('bikeajax.postdata') }}",
                     method:"POST",
                     data:form_data,
                     dataType:"json",
@@ -139,17 +142,17 @@
                 })
         });
 
-        $(document).on('click', '.edit', function(){
+    /*    $(document).on('click', '.edit', function(){
             var uid = $(this).attr("id");
             $('#form_output').html('');
             $.ajax({
-                url:"{{ route('userajax.fetchdata') }}",
+                url:"{{ route('bikeajax.fetchdata') }}",
                 method:'get',
                 data:{uid:uid},
                 dataType:'json',
                 success:function(data)
                 {
-                    //$('#uid').val(data.uid);
+                    $('#uid').val(data.uid);
                     $('#year').val(data.year);
                     $('#raberu_id').val(data.raberu_id);
                     $('#model').val(data.model);
@@ -162,7 +165,7 @@
                     $('#button_action').val('update');
                 }
             })
-        });
+        });*/
     
 
 
