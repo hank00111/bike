@@ -27,3 +27,5 @@ Route::get('/user', 'AjaxdataController@index')->name('userajax');
 Route::get('/user/getdata', 'AjaxdataController@getdata')->name('userajax.getdata');
 Route::post('/user/postdata', 'AjaxdataController@postdata')->name('userajax.postdata');
 Route::get('/user/fetchdata', 'AjaxdataController@fetchdata')->name('userajax.fetchdata');
+
+Route::resource('bike','bikeController');

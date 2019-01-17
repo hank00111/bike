@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Datatables Server Side Processing in Laravel</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
@@ -32,6 +33,7 @@
                     <th>HP</th>
                     <th>cc_id</th>
                     <th>操作</th>
+                   
                 </tr>
             </thead>
         </table>
@@ -49,7 +51,8 @@
                         <span id="form_output"></span>
 
                         <div class="form-group">
-                            {!! Form::label('year','年份:') !!} {!! Form::selectRange('year', 2019, 2000,2018,['class'=>'form-control']) !!}
+                            {!! Form::label('year','年份:') !!} 
+                            {!! Form::selectRange('year', 2019, 2000,2018,['class'=>'form-control']) !!}
                         </div>
                         <div class="form-group">
                             {!! Form::label('raberu_id','廠牌ID:') !!} {!! Form::select('raberu_id',array( '台灣' =>array('1' => '光陽' ,'2' => '三陽' ,'3' =>
@@ -60,13 +63,16 @@
 
                         </div>
                         <div class="form-group">
-                            {!! Form::label('model','車型') !!} {!! Form::text('model',null,['class'=>'form-control']) !!}
+                            {!! Form::label('model','車型') !!} 
+                            {!! Form::text('model',null,['class'=>'form-control']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('HP','馬力') !!} {!! Form::text('HP',null,['class'=>'form-control']) !!}
+                            {!! Form::label('HP','馬力') !!} 
+                            {!! Form::text('HP',null,['class'=>'form-control']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('cc_id','排氣量') !!} {!! Form::text('cc_id',null,['class'=>'form-control']) !!}
+                            {!! Form::label('cc_id','排氣量') !!} 
+                            {!! Form::text('cc_id',null,['class'=>'form-control']) !!}
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -94,7 +100,7 @@
                     { "data": "model",name: 'model' },
                     { "data": "HP",name: 'HP' },
                     { "data": "cc_id",name: 'cc_id' },
-                    { "data": "action", orderable:false, searchable: false}
+                    { "data": "action",orderable:true, searchable: true}
                     
                     
                 ]
@@ -138,32 +144,6 @@
                     }
                 })
         });
-
-        $(document).on('click', '.edit', function(){
-            var uid = $(this).attr("id");
-            $('#form_output').html('');
-            $.ajax({
-                url:"{{ route('userajax.fetchdata') }}",
-                method:'get',
-                data:{uid:uid},
-                dataType:'json',
-                success:function(data)
-                {
-                    //$('#uid').val(data.uid);
-                    $('#year').val(data.year);
-                    $('#raberu_id').val(data.raberu_id);
-                    $('#model').val(data.model);
-                    $('#HP').val(data.HP);
-                    $('#cc_id').val(data.cc_id);
-                    $('#bike_id').val(uid);
-                    $('#bikeModal').modal('show');
-                    $('#action').val('Edit');
-                    $('.modal-title').text('Edit Data');
-                    $('#button_action').val('update');
-                }
-            })
-        });
-    
 
 
 
