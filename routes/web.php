@@ -21,7 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home1', 'HomeController@index2')->name('home1');
+Route::get('/home2', 'HomeController@index3')->name('home2');
 
 Route::get('/user', 'AjaxdataController@index')->name('userajax');
 Route::get('/user/getdata', 'AjaxdataController@getdata')->name('userajax.getdata');

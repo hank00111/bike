@@ -25,4 +25,15 @@ class HomeController extends Controller
     {
         return view('test');
     }
+
+    public function index2()
+    {
+        return view('home1');
+    }
+
+    public function index3()
+    {
+        return view('user.index');
+    }
+    
 }
